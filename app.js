@@ -24,10 +24,6 @@ const generatePage = require("./src/page-template.js")
 const profileDataArgs = process.argv.slice(2)
 const [name, gitHub] = profileDataArgs
 
-// console.log(profileDataArgs());
-
-// printProfileData(profileDataArgs)
-
 const pageHTML = generatePage(name, gitHub)
 
 // creates the actual html file using the template created and arguments passed through terminal
