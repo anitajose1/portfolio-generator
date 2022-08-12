@@ -17,6 +17,12 @@
 // const profileDataArgs = process.argv.slice(2)
 // const [name, gitHub] = profileDataArgs
 
+
+// imports the fs module in to the app and puts it in a variable
+const fs = require("fs")
+// imports the generatePage function from the page-template.js file
+const generatePage = require("./src/page-template.js")
+
 // imports inquirer
 const inquirer = require("inquirer")
 // check if inquirer got imported
@@ -41,7 +47,7 @@ const promptUser = () => {
         },
         {
             type: "input",
-            name: "github",
+            name: "gitHub",
             message: "Enter your GitHub username (Required)",
             validate: githubName => {
                 if (githubName) {
@@ -160,16 +166,16 @@ const promptProject = portfolioData => {
 promptUser()
 .then(promptProject)
 .then(portfolioData => {
-    console.log(portfolioData);
+        const pageHTML = generatePage(portfolioData);
+
+        fs.writeFile('./index.html', pageHTML, err => {
+              if (err) throw new Error(err);
+
+              console.log('Page created! Check out index.html in this directory to see it!');
+            });
 })
 
-
-// imports the fs module in to the app and puts it in a variable
-// const fs = require("fs")
-// imports the generatePage function from the page-template.js file
-// const generatePage = require("./src/page-template.js")
-
-// const pageHTML = generatePage(name, gitHub)
+// const pageHTML = generatePage()
 
 // creates the actual html file using the template created and arguments passed through terminal
 // fs.writeFile("./index.html", pageHTML, err => {
