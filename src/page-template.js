@@ -82,7 +82,7 @@ module.exports = templateData => {
         <div class="container flex-row justify-space-between align-center py3">
           <h1 class="page-title text-secondary bg-dark py-2 px-3">${header.name}</h1>
           <nav class="flex-row">
-            <a class="ml-2 my-1 px-2 py-1 bg-secondary text-dark" href="https://github.com/${header.gitHub}">GitHub</a>
+            <a class="ml-2 my-1 px-2 py-1 bg-secondary text-dark" target="_blank" href="https://github.com/${header.gitHub}">GitHub</a>
           </nav>
         </div>
       </header>
@@ -97,6 +97,3 @@ module.exports = templateData => {
     </html>
     `;
 }
-
-// exports the generatePage function from this file
-// module.exports = generatePage()
